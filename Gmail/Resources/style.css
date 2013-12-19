@@ -1,0 +1,9 @@
+/* Custom stylesheet that makes sure To and From fields are always visible when composing. */
+
+.aoD.hl {
+    display:none !important;
+}
+
+.fX.aXjCH {
+    display:block !important;
+}

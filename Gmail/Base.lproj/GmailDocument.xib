@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="3338"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GmailDocument">
+            <connections>
+                <outlet property="status" destination="T3B-Bm-jGB" id="3wW-jn-EUL"/>
+                <outlet property="webView" destination="sNo-7k-74Y" id="N0t-Xv-kZi"/>
+                <outlet property="window" destination="5" id="ceN-OV-fxq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <window title="Gmail" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" wantsToBeColor="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="5" userLabel="Window">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
+            <rect key="contentRect" x="180" y="192" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <view key="contentView" id="6">
+                <rect key="frame" x="0.0" y="0.0" width="1280" height="800"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <webView translatesAutoresizingMaskIntoConstraints="NO" id="sNo-7k-74Y">
+                        <rect key="frame" x="0.0" y="20" width="1280" height="780"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                            <nil key="identifier"/>
+                        </webPreferences>
+                        <connections>
+                            <outlet property="UIDelegate" destination="2qc-oi-71H" id="JZA-cM-Sf6"/>
+                            <outlet property="downloadDelegate" destination="0re-m6-V3S" id="M9p-3z-QnS"/>
+                            <outlet property="policyDelegate" destination="qKd-SU-Kgc" id="BNd-5J-Lr5"/>
+                        </connections>
+                    </webView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T3B-Bm-jGB">
+                        <rect key="frame" x="3" y="0.0" width="2004" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="2000" id="ScJ-id-aa4"/>
+                        </constraints>
+                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" placeholderString="" id="Cio-we-Js4">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="sNo-7k-74Y" secondAttribute="trailing" id="6jV-Mp-pOg"/>
+                    <constraint firstAttribute="bottom" secondItem="T3B-Bm-jGB" secondAttribute="bottom" id="AXe-4D-bWb"/>
+                    <constraint firstItem="T3B-Bm-jGB" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="5" id="BiI-9H-neW"/>
+                    <constraint firstItem="sNo-7k-74Y" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="UC6-Fv-iNz"/>
+                    <constraint firstAttribute="bottom" secondItem="sNo-7k-74Y" secondAttribute="bottom" constant="20" id="XzZ-ZM-Bvl"/>
+                    <constraint firstItem="sNo-7k-74Y" firstAttribute="top" secondItem="6" secondAttribute="top" id="han-aG-08f"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="HPy-yF-OHA"/>
+            </connections>
+        </window>
+        <customObject id="-3" userLabel="Application"/>
+        <customObject id="0re-m6-V3S" customClass="GmailDownloadDelegate"/>
+        <customObject id="qKd-SU-Kgc" customClass="GmailPolicyDelegate"/>
+        <customObject id="2qc-oi-71H" customClass="GmailUIDelegate"/>
+    </objects>
+</document>
