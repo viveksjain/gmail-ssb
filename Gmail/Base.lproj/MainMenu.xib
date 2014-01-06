@@ -295,6 +295,18 @@
                                     <action selector="performZoom:" target="-1" id="240"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Show Main Window" id="bJa-j6-pCA">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showMainWindow:" target="qsl-yH-3yj" id="NfG-YX-UGc"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Load Gmail.com" alternate="YES" id="TDb-mA-D60">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                <connections>
+                                    <action selector="loadGmailInMainWindow:" target="qsl-yH-3yj" id="xXW-9s-kby"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="92">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>

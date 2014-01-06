@@ -7,4 +7,7 @@
 
 @interface GmailApplicationDelegate : NSObject<NSApplicationDelegate>
 
+- (IBAction)showMainWindow:(id)sender;
+- (IBAction)loadGmailInMainWindow:(id)sender;
+
 @end

@@ -65,14 +65,34 @@
 }
 
 /*
+ * Make the main window frontmost.
+ */
+- (IBAction)showMainWindow:(id)sender
+{
+    id mainWindow = [GmailUtils getMainWindow];
+    [mainWindow makeKeyAndOrderFront:self];
+}
+
+- (IBAction)loadGmailInMainWindow:(id)sender {
+    WebView *webView = [GmailUtils getMainWebView];
+    [webView setMainFrameURL:@"https://mail.google.com/"];
+}
+
+/*
  * If the only window of this application is the main window and it isn't
  * visible, this method makes it frontmost.
  */
 - (void)activate
 {
     NSArray *windows = [[NSApplication sharedApplication] windows];
-    id mainWindow = [GmailUtils getMainWindow];
-    if (![mainWindow isVisible] && [windows count] == 1) [mainWindow makeKeyAndOrderFront:self];
+    BOOL noneVisible = YES;
+    for (id window in windows) {
+        if ([window isVisible]) {
+            noneVisible = NO;
+            break;
+        }
+    }
+    if (noneVisible) [self showMainWindow:nil];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification
