@@ -12,7 +12,7 @@
 
 + (WebView *)getWebView:(id)window
 {
-    return [[[window contentView] subviews] firstObject];
+    return [[[window contentView] subviews] objectAtIndex:0];
 }
 
 + (WebView *)getMainWebView
@@ -22,7 +22,7 @@
 
 + (id)getMainWindow
 {
-    return [[[NSApplication sharedApplication] windows] firstObject];
+    return [[[NSApplication sharedApplication] windows] objectAtIndex:0];
 }
 
 @end

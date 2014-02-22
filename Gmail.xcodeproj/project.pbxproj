@@ -23,8 +23,7 @@
 		E2C9742C186298D800322AC5 /* GmailDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C97427186298D800322AC5 /* GmailDownloadDelegate.m */; };
 		E2C9742D186298D800322AC5 /* GmailPolicyDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C97429186298D800322AC5 /* GmailPolicyDelegate.m */; };
 		E2C9742E186298D800322AC5 /* GmailUIDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C9742B186298D800322AC5 /* GmailUIDelegate.m */; };
-		E2C974341862B04300322AC5 /* NSString+SymlinksAndAliases.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C974311862B04300322AC5 /* NSString+SymlinksAndAliases.m */; };
-		E2C974351862B04300322AC5 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C974331862B04300322AC5 /* PFMoveApplication.m */; };
+		E2C974351862B04300322AC5 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C974331862B04300322AC5 /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E2C974391862B1FE00322AC5 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C974381862B1FE00322AC5 /* Sparkle.framework */; };
 		E2C9743C1862B20C00322AC5 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = E2C9743A1862B20C00322AC5 /* icon.icns */; };
 		E2C9743D1862B20C00322AC5 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = E2C9743B1862B20C00322AC5 /* style.css */; };
@@ -88,8 +87,6 @@
 		E2C97429186298D800322AC5 /* GmailPolicyDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GmailPolicyDelegate.m; path = WebViewDelegates/GmailPolicyDelegate.m; sourceTree = "<group>"; };
 		E2C9742A186298D800322AC5 /* GmailUIDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GmailUIDelegate.h; path = WebViewDelegates/GmailUIDelegate.h; sourceTree = "<group>"; };
 		E2C9742B186298D800322AC5 /* GmailUIDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GmailUIDelegate.m; path = WebViewDelegates/GmailUIDelegate.m; sourceTree = "<group>"; };
-		E2C974301862B04300322AC5 /* NSString+SymlinksAndAliases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SymlinksAndAliases.h"; sourceTree = "<group>"; };
-		E2C974311862B04300322AC5 /* NSString+SymlinksAndAliases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymlinksAndAliases.m"; sourceTree = "<group>"; };
 		E2C974321862B04300322AC5 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
 		E2C974331862B04300322AC5 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
 		E2C974381862B1FE00322AC5 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Gmail/Resources/Sparkle.framework; sourceTree = "<group>"; };
@@ -220,8 +217,6 @@
 		E2C9742F1862B04300322AC5 /* LetsMove */ = {
 			isa = PBXGroup;
 			children = (
-				E2C974301862B04300322AC5 /* NSString+SymlinksAndAliases.h */,
-				E2C974311862B04300322AC5 /* NSString+SymlinksAndAliases.m */,
 				E2C974321862B04300322AC5 /* PFMoveApplication.h */,
 				E2C974331862B04300322AC5 /* PFMoveApplication.m */,
 			);
@@ -335,7 +330,6 @@
 				E2C9742D186298D800322AC5 /* GmailPolicyDelegate.m in Sources */,
 				E2C974481862D81C00322AC5 /* GmailUtils.m in Sources */,
 				E2C974351862B04300322AC5 /* PFMoveApplication.m in Sources */,
-				E2C974341862B04300322AC5 /* NSString+SymlinksAndAliases.m in Sources */,
 				E212C0A318382E84000AC262 /* main.m in Sources */,
 				E2105447185FE6D900C00826 /* GmailApplicationDelegate.m in Sources */,
 				E212C0AA18382E84000AC262 /* GmailDocument.m in Sources */,
@@ -477,7 +471,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gmail/Gmail-Prefix.pch";
 				INFOPLIST_FILE = "Gmail/Gmail-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "-ferror-limit=0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -494,7 +491,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gmail/Gmail-Prefix.pch";
 				INFOPLIST_FILE = "Gmail/Gmail-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "-ferror-limit=0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

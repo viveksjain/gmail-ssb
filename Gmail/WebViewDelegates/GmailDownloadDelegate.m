@@ -13,7 +13,9 @@
 - (id)init
 {
     self = [super init];
-    if (self) downloads = [NSMapTable weakToStrongObjectsMapTable];
+    if (self && NSClassFromString(@"NSProgress")) {
+        downloads = [NSMapTable weakToStrongObjectsMapTable];
+    }
     return self;
 }
 
@@ -26,42 +28,50 @@
 
 -(void)download:(NSURLDownload *)download didCreateDestination:(NSString *)path
 {
-    NSURL *downloadUrl = [NSURL fileURLWithPath:path];
-    GmailDownloadInfo *info = [downloads objectForKey:download];
-    [info setFilename:path];
-    
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                              NSProgressFileOperationKindDownloading,
-                                  NSProgressFileOperationKindKey,
-                              nil];
-    NSProgress *progress = [NSProgress progressWithTotalUnitCount:0];
-    progress = [progress initWithParent:nil userInfo:userInfo];
-    [progress setKind:NSProgressKindFile];
-    [progress setUserInfoObject:downloadUrl forKey:NSProgressFileURLKey];
-    [progress publish];
-    [info setProgress:progress];
+    if (downloads) {
+        NSURL *downloadUrl = [NSURL fileURLWithPath:path];
+        GmailDownloadInfo *info = [downloads objectForKey:download];
+        [info setFilename:path];
+        
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  NSProgressFileOperationKindDownloading,
+                                      NSProgressFileOperationKindKey,
+                                  nil];
+        NSProgress *progress = [NSProgress progressWithTotalUnitCount:0];
+        progress = [progress initWithParent:nil userInfo:userInfo];
+        [progress setKind:NSProgressKindFile];
+        [progress setUserInfoObject:downloadUrl forKey:NSProgressFileURLKey];
+        [progress publish];
+        [info setProgress:progress];
+    }
 }
 
 - (void)download:(NSURLDownload *)download didReceiveResponse:(NSURLResponse *)response
 {
-    GmailDownloadInfo *info = [[GmailDownloadInfo alloc] init];
-    [info setResponse:response];
-    [downloads setObject:info forKey:download];
+    if (downloads) {
+        GmailDownloadInfo *info = [[GmailDownloadInfo alloc] init];
+        [info setResponse:response];
+        [downloads setObject:info forKey:download];
+    }
 }
 
 - (void)download:(NSURLDownload *)download didReceiveDataOfLength:(unsigned)length {
-    GmailDownloadInfo *info = [downloads objectForKey:download];
-    long long expectedLength = [[info response] expectedContentLength];
-    int64_t completed = [[info progress] completedUnitCount];
-    [[info progress] setCompletedUnitCount:(completed + length)];
-    if (expectedLength != NSURLResponseUnknownLength) [[info progress] setTotalUnitCount:expectedLength];
+    if (downloads) {
+        GmailDownloadInfo *info = [downloads objectForKey:download];
+        long long expectedLength = [[info response] expectedContentLength];
+        int64_t completed = [[info progress] completedUnitCount];
+        [[info progress] setCompletedUnitCount:(completed + length)];
+        if (expectedLength != NSURLResponseUnknownLength) [[info progress] setTotalUnitCount:expectedLength];
+    }
 }
 
 - (void)downloadDidFinish:(NSURLDownload *)download {
-    GmailDownloadInfo *info = [downloads objectForKey:download];
-    [[info progress] unpublish];
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"com.apple.DownloadFileFinished" object:[info filename]];
-    [downloads removeObjectForKey:download];
+    if (downloads) {
+        GmailDownloadInfo *info = [downloads objectForKey:download];
+        [[info progress] unpublish];
+        [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"com.apple.DownloadFileFinished" object:[info filename]];
+        [downloads removeObjectForKey:download];
+    }
 }
 
 @end

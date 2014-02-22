@@ -67,7 +67,7 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"style" ofType:@"css"];
     [prefs setUserStyleSheetLocation:[NSURL fileURLWithPath:path]];
     
-    [webView _setNotificationProvider:[NotificationProvider sharedNotificationProvider]];
+    if (NSClassFromString(@"NSUserNotificationCenter")) [webView _setNotificationProvider:[NotificationProvider sharedNotificationProvider]];
 }
 
 - (void)setStatusLabel:(NSString *)status
