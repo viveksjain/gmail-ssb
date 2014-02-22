@@ -1,5 +1,5 @@
 //
-//  PFMoveApplication.m, version 1.9
+//  PFMoveApplication.m, version 1.10
 //  LetsMove
 //
 //  Created by Andy Kim at Potion Factory LLC on 9/17/09
@@ -8,7 +8,6 @@
 
 #import "PFMoveApplication.h"
 
-#import "NSString+SymlinksAndAliases.h"
 #import <Security/Security.h>
 #import <dlfcn.h>
 #import <sys/param.h>
@@ -83,7 +82,7 @@ void PFMoveToApplicationsFolderIfNecessary(void) {
 	needAuthorization |= ([fm fileExistsAtPath:destinationPath] && ![fm isWritableFileAtPath:destinationPath]);
 
 	// Setup the alert
-	NSAlert *alert = [[NSAlert alloc] init];
+	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	{
 		NSString *informativeText = nil;
 
@@ -194,7 +193,7 @@ void PFMoveToApplicationsFolderIfNecessary(void) {
 fail:
 	{
 		// Show failure message
-		alert = [[NSAlert alloc] init];
+		alert = [[[NSAlert alloc] init] autorelease];
 		[alert setMessageText:kStrMoveApplicationCouldNotMove];
 		[alert runModal];
 	}
@@ -224,7 +223,7 @@ static NSString *PreferredInstallLocation(BOOL *isUserDirectory) {
 			for (NSString *contentsPath in contents) {
 				if ([[contentsPath pathExtension] isEqualToString:@"app"]) {
 					if (isUserDirectory) *isUserDirectory = YES;
-					return [userApplicationsDir stringByResolvingSymlinksAndAliases];
+					return [userApplicationsDir stringByResolvingSymlinksInPath];
 				}
 			}
 		}
@@ -232,7 +231,8 @@ static NSString *PreferredInstallLocation(BOOL *isUserDirectory) {
 
 	// No user Applications directory in use. Return the machine local Applications directory
 	if (isUserDirectory) *isUserDirectory = NO;
-	return [[NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSLocalDomainMask, YES) lastObject] stringByResolvingSymlinksAndAliases];
+
+	return [[NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSLocalDomainMask, YES) lastObject] stringByResolvingSymlinksInPath];
 }
 
 static BOOL IsInApplicationsFolder(NSString *path) {
@@ -291,7 +291,7 @@ static NSString *ContainingDiskImageDevice(void) {
 
 	NSString *device = [[NSFileManager defaultManager] stringWithFileSystemRepresentation:fs.f_mntfromname length:strlen(fs.f_mntfromname)];
 
-	NSTask *hdiutil = [[NSTask alloc] init];
+	NSTask *hdiutil = [[[NSTask alloc] init] autorelease];
 	[hdiutil setLaunchPath:@"/usr/bin/hdiutil"];
 	[hdiutil setArguments:[NSArray arrayWithObjects:@"info", @"-plist", nil]];
 	[hdiutil setStandardOutput:[NSPipe pipe]];
