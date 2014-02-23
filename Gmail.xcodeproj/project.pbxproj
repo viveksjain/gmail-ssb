@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		E2105447185FE6D900C00826 /* GmailApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2105446185FE6D900C00826 /* GmailApplicationDelegate.m */; };
 		E210545B186047C300C00826 /* GmailDownloadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E210545A186047C300C00826 /* GmailDownloadInfo.m */; };
-		E210545F18605F4F00C00826 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E212C0AE18382E84000AC262 /* MainMenu.xib */; };
-		E210546018605F5300C00826 /* GmailDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = E212C0AB18382E84000AC262 /* GmailDocument.xib */; };
 		E212C09718382E84000AC262 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E212C09618382E84000AC262 /* Cocoa.framework */; };
 		E212C0A118382E84000AC262 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E212C09F18382E84000AC262 /* InfoPlist.strings */; };
 		E212C0A318382E84000AC262 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E212C0A218382E84000AC262 /* main.m */; };
@@ -19,6 +17,8 @@
 		E212C0B918382E84000AC262 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E212C0B818382E84000AC262 /* XCTest.framework */; };
 		E212C0BA18382E84000AC262 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E212C09618382E84000AC262 /* Cocoa.framework */; };
 		E212C0CE18382EF6000AC262 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E212C0CD18382EF6000AC262 /* WebKit.framework */; };
+		E279DA0618B9FDFD00A31228 /* GmailDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = E279DA0218B9FDFD00A31228 /* GmailDocument.xib */; };
+		E279DA0718B9FDFD00A31228 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E279DA0418B9FDFD00A31228 /* MainMenu.xib */; };
 		E2AC75021863E3EF004E2EB0 /* GmailNotificationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E2AC75011863E3EF004E2EB0 /* GmailNotificationProvider.m */; };
 		E2C9742C186298D800322AC5 /* GmailDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C97427186298D800322AC5 /* GmailDownloadDelegate.m */; };
 		E2C9742D186298D800322AC5 /* GmailPolicyDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C97429186298D800322AC5 /* GmailPolicyDelegate.m */; };
@@ -73,11 +73,11 @@
 		E212C0A618382E84000AC262 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		E212C0A818382E84000AC262 /* GmailDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GmailDocument.h; sourceTree = "<group>"; };
 		E212C0A918382E84000AC262 /* GmailDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GmailDocument.m; sourceTree = "<group>"; };
-		E212C0AC18382E84000AC262 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GmailDocument.xib; sourceTree = "<group>"; };
-		E212C0AF18382E84000AC262 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E212C0B718382E84000AC262 /* GmailTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GmailTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E212C0B818382E84000AC262 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		E212C0CD18382EF6000AC262 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		E279DA0318B9FDFD00A31228 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GmailDocument.xib; sourceTree = "<group>"; };
+		E279DA0518B9FDFD00A31228 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E2AC75001863E3EF004E2EB0 /* GmailNotificationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GmailNotificationProvider.h; path = WebViewDelegates/GmailNotificationProvider.h; sourceTree = "<group>"; };
 		E2AC75011863E3EF004E2EB0 /* GmailNotificationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GmailNotificationProvider.m; path = WebViewDelegates/GmailNotificationProvider.m; sourceTree = "<group>"; };
 		E2AC75031863E431004E2EB0 /* WebNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebNotification.h; sourceTree = "<group>"; };
@@ -166,8 +166,8 @@
 		E212C09C18382E84000AC262 /* Gmail */ = {
 			isa = PBXGroup;
 			children = (
-				E212C0AB18382E84000AC262 /* GmailDocument.xib */,
-				E212C0AE18382E84000AC262 /* MainMenu.xib */,
+				E279DA0218B9FDFD00A31228 /* GmailDocument.xib */,
+				E279DA0418B9FDFD00A31228 /* MainMenu.xib */,
 				E2105445185FE6D900C00826 /* GmailApplicationDelegate.h */,
 				E2105446185FE6D900C00826 /* GmailApplicationDelegate.m */,
 				E212C0A818382E84000AC262 /* GmailDocument.h */,
@@ -304,9 +304,9 @@
 				E2C974451862C55C00322AC5 /* dsa_pub.pem in Resources */,
 				E2C9743C1862B20C00322AC5 /* icon.icns in Resources */,
 				E2C9743D1862B20C00322AC5 /* style.css in Resources */,
-				E210546018605F5300C00826 /* GmailDocument.xib in Resources */,
-				E210545F18605F4F00C00826 /* MainMenu.xib in Resources */,
+				E279DA0618B9FDFD00A31228 /* GmailDocument.xib in Resources */,
 				E212C0A118382E84000AC262 /* InfoPlist.strings in Resources */,
+				E279DA0718B9FDFD00A31228 /* MainMenu.xib in Resources */,
 				E212C0A718382E84000AC262 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,18 +372,18 @@
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		E212C0AB18382E84000AC262 /* GmailDocument.xib */ = {
+		E279DA0218B9FDFD00A31228 /* GmailDocument.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E212C0AC18382E84000AC262 /* Base */,
+				E279DA0318B9FDFD00A31228 /* en */,
 			);
 			name = GmailDocument.xib;
 			sourceTree = "<group>";
 		};
-		E212C0AE18382E84000AC262 /* MainMenu.xib */ = {
+		E279DA0418B9FDFD00A31228 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E212C0AF18382E84000AC262 /* Base */,
+				E279DA0518B9FDFD00A31228 /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";

@@ -7,4 +7,4 @@ Features
  - Supports showing new mail notifications
  - Automatic updates via [Sparkle](http://sparkle.andymatuschak.org)
 
-[Download](http://vivekja.in/gmail-ssb/downloads/Gmail-v1.0.zip)
+[Download](http://vivekja.in/gmail-ssb/downloads/Gmail-v1.0.1.zip)
